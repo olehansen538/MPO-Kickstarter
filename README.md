@@ -2,7 +2,7 @@
 
 create a new environment 'kickstarter':
 
-````
+```
 conda create --name kickstarter python=3.8.5
 conda install -n kickstarter pytest==6.1.1
 conda install -n kickstarter ipython
