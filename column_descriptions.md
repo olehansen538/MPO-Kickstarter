@@ -1,9 +1,9 @@
 **Description of raw data columns:**
 
-Index | Name | nulls (out of 209222) | type | interpretation
+Index | Name | Nulls (out of 209222) | Type | Interpretation
 -|-|-|-|-
 0 | backers_count | none | int64 | how many people backed the campaign
-1   | blurb | 8 | object 
+1   | blurb | 8 | object | how many people backed the campaign how many people backed the campaign how many people backed the campaign
 2   | category | none | object 
 3   | converted_pledged_amount | none | int64  
  4   | country | none | object 
