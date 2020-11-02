@@ -49,3 +49,5 @@ category_in_blurb | Is the category or subcategory mentioned in the blurb
 category_id | Subcategory of project
 category_parent | Category of project
 catgeroy_name | Name of either category or subcategory
+duration | How long the project could be pledged in days
+preparation | How many days between creation and launch of project site
