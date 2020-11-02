@@ -51,3 +51,4 @@ category_parent | Category of project
 catgeroy_name | Name of either category or subcategory
 duration | How long the project could be pledged in days
 preparation | How many days between creation and launch of project site
+ind_pledge | Average pledge per contributor
