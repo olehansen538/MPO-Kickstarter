@@ -39,3 +39,13 @@ Index | Name | Nulls (out of 209222) | Type | Interpretation
  34  | urls | none | object | ???
  35  | usd_pledged | none | float64 | ???
  36  | usd_type | 480 | object | ???
+
+
+**New columns**
+name | purpose
+-|-
+len_blurb | How many words were used in the blurb description
+category_in_blurb | Is the category or subcategory mentioned in the blurb
+category_id | Subcategory of project
+category_parent | Category of project
+catgeroy_name | Name of either category or subcategory
