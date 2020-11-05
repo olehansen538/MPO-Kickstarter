@@ -9,6 +9,10 @@ Requirements:
 condamini or conda
 or pyenv with Python: 3.8.5
 
+### Final presentation
+
+https://docs.google.com/presentation/d/1CT6pC7G57GTv4-Bc5trhiG4ldJ0mKqcRWn7vG4x33lw/edit#slide=id.p
+
 
 ### Setup
 
