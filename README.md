@@ -41,6 +41,7 @@ In order to test that predict works on a test set you created run:
 python predict.py models/linear_regression_model.sav data/X_test.csv data/y_test.csv
 
 
+
 **Description column names for business case**
 
 name | purpose
@@ -60,7 +61,7 @@ time_yr | q1: January - March, q2: April - June, q3: July - September, q4: Octob
 **Description of raw data columns:**
 
 Index | Name | Interpretation
--|-|-|-|-
+-|-|-
 0 | backers_count | how many people backed the campaign
 1   | blurb | a brief description of the project, probably limited in terms of number of words
 2   | category | category of project, including subcategories
