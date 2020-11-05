@@ -24,6 +24,8 @@ model = pickle.load(open('RF_class_kick.sav', 'rb'))
 X_test = pd.read_csv('data/X_test.csv')
 y_test = pd.read_csv('data/y_test.csv')
 
+print("shape X_test before: ", X_test.shape)
+
 
 ## feature Engineering
 
@@ -130,6 +132,10 @@ X_test = pd.concat([X_test, X_test_dum3], axis=1)
 
 X_test = fef.drop_columns(X_test, ['usd_pledged'])
 
+y_test = X_test['state']
+X_test = X_test.drop('state', axis=1)
+X_test = X_test.drop('index', axis=1)
+
 # we have to define which columns we want to scale.
 col_scale = ['goal', 'blurb_len_w', 'slug_len_w', 'duration_days', 'preparation', 'pledged_per_backer']
 
@@ -139,16 +145,21 @@ X_test_scaled_st = scaler.fit_transform(X_test[col_scale])
 #X_test_scaled_st = scaler.transform(X_test[col_scale])
 
 # Concatenating scaled and dummy columns 
-X_test_preprocessed_st = np.concatenate([X_test_scaled_st, X_test.drop(col_scale, axis=1)], axis=1)
-#X_test_preprocessed_st = np.concatenate([X_test_scaled_st, X_test.drop(col_scale, axis=1)], axis=1)
+X_test_without = X_test.drop(col_scale, axis=1)
+X_test_preprocessed_st = np.concatenate([X_test_scaled_st, X_test_without], axis=1)
+#X_test_preprocessed_st = X_test_without.join(X_test_scaled_st, rsuffix = "_scaled")
 
-y_test = X_test['state']
-X_test = X_test.drop('state', axis=1)
+#X_test_preprocessed_st = np.concatenate([X_test_scaled_st, X_test.drop(col_scale, axis=1)], axis=1)
+#y_test = X_test_preprocessed_st['state']
+#X_test_preprocessed_st = X_test_preprocessed_st.drop('state', axis=1)
+
+print("shape X_test: ", X_test_preprocessed_st.shape)
+#print(X_test_preprocessed_st.columns)
 
 
 # Testing predictions (to determine performance)
 y_pred = model.predict(X_test_preprocessed_st)
-y_probs = model.predict_proba(X_test_preprocessed_st)[:, 1]
+#y_probs = model.predict_proba(X_test_preprocessed_st)[:, 1]
 
 
 # Compute confusion matrix
@@ -158,7 +169,7 @@ np.set_printoptions(precision=2)
 print (classification_report(y_test, y_pred))
 
 # Plot non-normalized confusion matrix
-plt.figure()
-plot_confusion_matrix(cnf_matrix, classes=['failed','successful'],normalize= False,  title='Confusion matrix')
+#plt.figure()
+#plot_confusion_matrix(cnf_matrix, classes=['failed','successful'],normalize= False,  title='Confusion matrix')
 
 print("Completed :)")

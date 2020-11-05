@@ -162,6 +162,11 @@ X_train = pd.concat([X_train, X_train_dum3], axis=1)
 
 X_train = fef.drop_columns(X_train, ['usd_pledged'])
 
+
+y_train = X_train['state']
+X_train = X_train.drop('state', axis=1)
+X_train = X_train.drop('index', axis=1)
+
 # we have to define which columns we want to scale.
 col_scale = ['goal', 'blurb_len_w', 'slug_len_w', 'duration_days', 'preparation', 'pledged_per_backer']
 
@@ -174,8 +179,6 @@ X_train_scaled_st = scaler.fit_transform(X_train[col_scale])
 X_train_preprocessed_st = np.concatenate([X_train_scaled_st, X_train.drop(col_scale, axis=1)], axis=1)
 #X_test_preprocessed_st = np.concatenate([X_test_scaled_st, X_test.drop(col_scale, axis=1)], axis=1)
 
-y_train = X_train['state']
-X_train = X_train.drop('state', axis=1)
 
 
 # Create the model with 100 trees
@@ -186,6 +189,8 @@ model = RandomForestClassifier(n_estimators=100,
 
 # Fit on training data
 model.fit(X_train_preprocessed_st, y_train)
+
+print(X_train_preprocessed_st.shape)
 
 #saving the model
 print("Saving model in the model folder")
