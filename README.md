@@ -1,9 +1,23 @@
 # MPO-Kickstarter
 
 Business case: Mr. Brain invented a Meme Master Memory and needs money for the implementation. He wants to do the project in 4 weeks, wants to get 100,000USD and wants to launch the campaign in summertime in the category photography.
-Under these circumstances, will the project be successful? Furthermore we want to recommend Mr. Brain different improvements to increase his chance for success. In addition we also want to predict his potential pledge amount. 
+Under these circumstances, will the project be successful? Furthermore we want to recommend Mr. Brain different improvements to increase his chance for success. In addition we also want to predict his potential pledged amount. 
 
-create a new environment 'kickstarter':
+
+Requirements:
+
+condamini or conda
+or pyenv with Python: 3.8.5
+
+
+### Setup
+
+Having Anaconda installed then create your ENV with
+
+make setup-conda
+With pyenv installed
+
+make setup-pyenv
 
 ````
 conda create --name kickstarter python=3.8.5
@@ -14,9 +28,18 @@ conda install -n kickstarter seaborn
 conda install -n kickstarter scikit-learn
 conda install -n kickstarter scipy
 conda install -n kickstarter -c anaconda statsmodels 
-conda install -n kickstarter bokeh
 conda install -n kickstarter -c conda-forge xgboost
-```
+````
+
+### Usage
+
+In order to train the model and store test data in the data folder and the model in models run:
+
+python train.py  
+In order to test that predict works on a test set you created run:
+
+python predict.py models/linear_regression_model.sav data/X_test.csv data/y_test.csv
+
 
 **Description column names for business case**
 
